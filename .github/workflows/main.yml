@@ -1,11 +1,24 @@
-name: Main workflow
-on: push
+on:
+  # Trigger analysis when pushing to your main branches, and when creating a pull request.
+  push:
+    branches:
+      - main
+      - master
+      - develop
+      - 'releases/**'
+  pull_request:
+      types: [opened, synchronize, reopened]
+
+name: Main Workflow
 jobs:
-  Build:
+  sonarqube:
     runs-on: ubuntu-latest
-    container: gradle:6-jdk11
     steps:
-      - name: Clone down repository
-        uses: actions/checkout@v4       
-      - name: Build application
-        run: ci/build-app.sh
+    - uses: actions/checkout@v4
+      with:
+        # Disabling shallow clones is recommended for improving the relevancy of reporting
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@master # Ex: v4.1.0 or sha1, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
+      env:
+        SONAR_TOKEN: 1b9ad81f39b03b05dc425fc24f47086429e54086
