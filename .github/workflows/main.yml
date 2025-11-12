@@ -35,6 +35,7 @@ jobs:
           args: >
             -Dsonar.projectKey=alexandravelichkova
             -Dsonar.organization=AlexandraVelichkova
+            -Dsonar.qualitygate.wait=false
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # required for self-hosted SonarQube
