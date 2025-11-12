@@ -25,4 +25,4 @@ jobs:
           -Dsonar.projectKey=alexandravelichkova
           -Dsonar.organization=AlexandraVelichkova# Ex: v4.1.0 or sha1, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
       env:
-        SONAR_TOKEN: 1b9ad81f39b03b05dc425fc24f47086429e54086
+        SONAR_TOKEN: ${SONAR_TOKEN}
